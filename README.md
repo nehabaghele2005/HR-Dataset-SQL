@@ -3,7 +3,12 @@ SQL Project
 
 💼 HR Dataset SQL Analysis Project
 
-This project showcases the end-to-end analysis of an HR dataset using SQL. The analysis aims to extract meaningful insights about employees, organizational structure, performance, and attrition using SQL queries on structured data.
+This project showcases the end-to-end analysis of an HR dataset using SQL. 
+The analysis aims to extract meaningful insights about employees, 
+organizational structure, performance, and attrition using SQL queries on structured data.
+
+
+
 
 
 📌 Project Overview
@@ -12,6 +17,8 @@ Dataset Source: Employee dataset stored in SQL (uploaded and structured into emp
 Database Used: MySQL
 
 Objective: Perform data cleaning, transformation, and analysis to derive insights such as attrition rate, employee distribution, average salary, and more.
+
+
 
 
 
@@ -24,13 +31,20 @@ EmpID, Employee_Name, GenderID, DeptID, Salary, DOB, DateofHire, DateofTerminati
 
 
 
+
+
+
 📌 Database & Table Setup
+
+
 
 
 CREATE DATABASE hrdata;
 USE hrdata;
 SELECT * FROM employees;
 📊 Core Analysis Queries Total Current Employees
+
+
 
 
 
@@ -41,10 +55,14 @@ Total Terminated Employees
 
 
 
+
+
 SELECT COUNT(*) AS Total_Exited_Employees
 FROM employees
 WHERE DateofTermination != '';
 Average Salary
+
+
 
 
 
@@ -54,14 +72,20 @@ Average Age of Employees
 
 
 
+
+
 SELECT AVG(TIMESTAMPDIFF(YEAR,STR_TO_DATE(DOB,'%d-%m-%Y'),CURDATE())) AS Avg_Age
 FROM Employees;
 Average Years in Company
 
 
 
+
+
 SELECT AVG(TIMESTAMPDIFF(YEAR,STR_TO_DATE(DateOfHire,'%d-%m-%Y'),CURDATE())) AS Avg_Years_in_Company
 FROM Employees;
+
+
 
 
 
@@ -77,8 +101,12 @@ Added a new column EmployeeCurrentStatus to indicate current (1) or exited (0) e
 
 
 
+
+
 ALTER TABLE employees
 ADD EmployeeCurrentStatus INT;
+
+
 
 UPDATE employees
 SET EmployeeCurrentStatus = CASE
@@ -87,12 +115,16 @@ ELSE 0
 END;
 📈 Attrition Rate Calculation
 
+
+
 SELECT
 (CAST(COUNT(CASE WHEN EmployeeCurrentStatus = 0 THEN 1 END) AS FLOAT)/COUNT(*))*100 AS Attrition_Rate
 FROM employees;
 📊 Additional Insights
 
 Employees by Marital Status
+
+
 
 
 SELECT MaritalDesc, COUNT(*) AS count
@@ -133,6 +165,8 @@ Last 5 Rows by EmpID
 SELECT * FROM employees ORDER BY EmpID DESC LIMIT 5;
 
 
+
+
 🧠 Key Learnings
 
 Performed data cleaning and formatting using SQL functions.
@@ -144,6 +178,8 @@ Transformed raw data into business-ready analytics using SQL queries.
 Improved query efficiency and readability with appropriate formatting and functions.
 
 
+
+
 📁 Tools Used
 
 SQL (MySQL Workbench / XAMPP / DBeaver)
@@ -151,6 +187,8 @@ SQL (MySQL Workbench / XAMPP / DBeaver)
 Structured Data in Table Format
 
 Manual Data Upload and Formatting
+
+
 
 
 ✅ Outcomes
