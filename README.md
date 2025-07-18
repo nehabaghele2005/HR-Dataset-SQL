@@ -42,6 +42,9 @@ EmpID, Employee_Name, GenderID, DeptID, Salary, DOB, DateofHire, DateofTerminati
 CREATE DATABASE hrdata;
 USE hrdata;
 SELECT * FROM employees;
+
+
+
 📊 Core Analysis Queries Total Current Employees
 
 
